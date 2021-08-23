@@ -46,8 +46,8 @@ private class StateOne : FSMState
 	{
 		this.exampleClass = exampleClass;
 		FSMTransition toStateTwo = new FSMTransition(ExampleClass.STATE_2);
-	    toStateTwo.AddCondition(ExampleClass.VARIABLE_1, true);
-	    transitions.Add(toStateTwo);
+		toStateTwo.AddCondition(ExampleClass.VARIABLE_1, true);
+		transitions.Add(toStateTwo);
 	}
 
 	public override void Update()
@@ -65,8 +65,8 @@ private class StateTwo : FSMState
 	{
 		this.exampleClass = exampleClass;
 		FSMTransition toStateOne = new FSMTransition(ExampleClass.STATE_2);
-	    toStateOne.AddCondition(ExampleClass.VARIABLE_1, false);
-	    transitions.Add(toStateOne);
+		toStateOne.AddCondition(ExampleClass.VARIABLE_1, false);
+		transitions.Add(toStateOne);
 	}
 
 	public override void Update()
