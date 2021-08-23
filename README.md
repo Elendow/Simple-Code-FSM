@@ -1,6 +1,7 @@
 **Simple Code Finite State Machines for Unity3D**
 
 **How To Use**
+
 Declare and initialize the FSM with some states and variables. You'll need your own states based on the class FSMState.
 ```C#
 
