@@ -8,7 +8,7 @@ Declare and initialize the FSM with some states and variables. You'll need your 
 private class ExampleClass : MonoBehaviour
 {
 	public const int STATE_1 = 1;
-	public const int STATE_2 = 1;
+	public const int STATE_2 = 2;
 
 	public const int VARIABLE_1 = 1;
 
