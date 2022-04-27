@@ -2,13 +2,15 @@
 
 **How To Use**
 
-Declare and initialize the FSM with some states and variables. You'll need your own states based on the class FSMState.
+Declare and initialize the FSM with some states and variables. 
+You'll need your own states based on the class FSMState.
+
 ```C#
 
 private class ExampleClass : MonoBehaviour
 {
 	public const int STATE_1 = 1;
-	public const int STATE_2 = 2;
+	public const int STATE_2 = 1;
 
 	public const int VARIABLE_1 = 1;
 
@@ -34,7 +36,9 @@ private class ExampleClass : MonoBehaviour
 }
 ```
 
-Now you can create your own states with conditions to run to one another.
+Now you can create your own states with conditions to run to one another. 
+The conditions can be updated outside the FSM, but it's better if it's done inside one of it's states.
+
 ```C#
 private class StateOne : FSMState
 {
