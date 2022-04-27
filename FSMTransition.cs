@@ -7,7 +7,7 @@ public class FSMTransition
     private int to;
     private Dictionary<int, bool> conditions;
 
-    public FSMTransition(int to, bool allTrue = false)
+    public FSMTransition(int to, bool allTrue)
     {
         this.to = to;
         this.allTrue = allTrue;
@@ -17,7 +17,9 @@ public class FSMTransition
     public bool CheckCondition(int variable, bool value)
     {
         if (conditions.TryGetValue(variable, out bool condition))
+        {
             return value == condition;
+        }
 
         return false;
     }
@@ -25,9 +27,13 @@ public class FSMTransition
     public void AddCondition(int variable, bool value)
     {
         if (!conditions.ContainsKey(variable))
+        {
             conditions.Add(variable, value);
+        }
         else
+        {
             Debug.LogWarning("Condition already added");
+        }
     }
 
     public int To
@@ -45,9 +51,13 @@ public class FSMTransition
         get
         {
             if (!allTrue)
+            {
                 return 1;
+            }
             else
+            {
                 return conditions.Count;
+            }
         }
     }
 }

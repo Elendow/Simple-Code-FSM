@@ -16,6 +16,8 @@ private class ExampleClass : MonoBehaviour
 
 	private void Start()
 	{
+		// Initialize your FSM
+
 		fsm = new FSM();
 
 		fsm.AddVariable(VARIABLE_1, false);
@@ -26,12 +28,8 @@ private class ExampleClass : MonoBehaviour
 
 	private void Update()
 	{
+		// Update the FSM
 		fsm.Update();
-	}
-
-	public FSM FSM
-	{
-		get => fsm;
 	}
 }
 ```
@@ -41,38 +39,54 @@ Now you can create your own states with conditions to run to one another.
 private class StateOne : FSMState
 {
 	private ExampleClass exampleClass;
+	private float timer;
 
 	public StateOne(ExampleClass exampleClass)
 	{
 		this.exampleClass = exampleClass;
-		FSMTransition toStateTwo = new FSMTransition(ExampleClass.STATE_2);
-		toStateTwo.AddCondition(ExampleClass.VARIABLE_1, true);
-		transitions.Add(toStateTwo);
+		AddTransition(ExampleClass.STATE_2, false, new FSMCondition(ExampleClass.VARIABLE_1, true));
+	}
+
+	public override void Start()
+	{
+		timer = 0;
 	}
 
 	public override void Update()
 	{
-		// Do things here
-		exampleClass.FSM.UpdateVariable(ExampleClass.VARIABLE_1, true);
+		// Do things here and update your variables to trigger the transitions
+		timer += Time.deltaTime;
+		if (timer > 5)
+		{
+			fsm.UpdateVariable(ExampleClass.VARIABLE_1, true);
+		}
 	}
 }
 
 private class StateTwo : FSMState
 {
 	private ExampleClass exampleClass;
+	private float timer;
 
 	public StateTwo(ExampleClass exampleClass)
 	{
 		this.exampleClass = exampleClass;
-		FSMTransition toStateOne = new FSMTransition(ExampleClass.STATE_1);
-		toStateOne.AddCondition(ExampleClass.VARIABLE_1, false);
-		transitions.Add(toStateOne);
+		AddTransition(ExampleClass.STATE_1, false, new FSMCondition(ExampleClass.VARIABLE_1, false));
+	}
+
+	public override void Start()
+	{
+		timer = 0;
 	}
 
 	public override void Update()
 	{
-		// Do things here
-		exampleClass.FSM.UpdateVariable(ExampleClass.VARIABLE_1, false);
+		// Do things here and update your variables to trigger the transitions
+		timer += Time.deltaTime;
+		if (timer > 5)
+		{
+			fsm.UpdateVariable(ExampleClass.VARIABLE_1, false);
+		}
 	}
 }
 ```

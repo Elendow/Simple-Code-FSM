@@ -83,6 +83,7 @@ public class FSM
         if(!states.ContainsKey(stateID))
         {
             states.Add(stateID, state);
+            state.FSM = this;
         }
         else
         {
@@ -93,7 +94,9 @@ public class FSM
     public void Update()
     {
         if (currentState == null)
+        {
             return;
+        }
 
         currentState.Update();
         CheckConditions();
@@ -140,6 +143,6 @@ public class FSM
 
     public int CurrentStateIndex
     {
-        get { return currentStateIndex; }
+        get => currentStateIndex;
     }
 }
