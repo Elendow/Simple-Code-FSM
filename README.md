@@ -25,7 +25,7 @@ private class ExampleClass : MonoBehaviour
 		fsm.AddVariable(VARIABLE_1, false);
 
 		fsm.AddState(STATE_1, new StateOne(this));
-		fsm.AddState(STATE_1, new StateTwo(this));
+		fsm.AddState(STATE_2, new StateTwo(this));
 	}
 
 	private void Update()
