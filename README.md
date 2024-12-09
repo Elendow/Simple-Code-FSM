@@ -10,7 +10,7 @@ You'll need your own states based on the class FSMState.
 private class ExampleClass : MonoBehaviour
 {
 	public const int STATE_1 = 1;
-	public const int STATE_2 = 1;
+	public const int STATE_2 = 2;
 
 	public const int VARIABLE_1 = 1;
 
